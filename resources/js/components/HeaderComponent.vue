@@ -25,7 +25,7 @@
                     </li>
                     <li class="nav-item">
                         <router-link :to="`/cart`" class="nav-link">
-                            <span class="material-icons">shopping_basket</span>
+                            <i class="fas fa-shopping-basket"></i>
                             <sup>{{ total }}</sup>
                         </router-link>
                     </li>

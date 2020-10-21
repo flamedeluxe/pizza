@@ -21,5 +21,5 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/{any}', function () {
-    return view('layouts.index');
-})->where('any', '.*');
+        return view('layouts.index');
+    })->where('any', '.*');

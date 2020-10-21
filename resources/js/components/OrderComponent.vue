@@ -1,0 +1,138 @@
+<template>
+    <div class="mt-5 mb-5">
+        <div class="row">
+            <form class="card-body border" action="" @submit.prevent="order">
+                <h3 class="mb-4">Order info</h3>
+                <div class="row">
+                    <div class="col-12 col-lg-6 form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name"
+                               v-model="form.name"
+                               :class="`form-control ${error(errors, 'name') ? 'is-invalid' : ''}`"
+                        >
+                        <div class="invalid-feedback" v-if="error(errors, 'name')">
+                            {{ error(errors, 'name') }}
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 form-group">
+                        <label for="surname">Surname</label>
+                        <input type="text" id="surname"
+                               v-model="form.surname"
+                               :class="`form-control ${error(errors, 'name') ? 'is-invalid' : ''}`"
+                        >
+                        <div class="invalid-feedback" >
+                            {{ error(errors, 'surname') }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-6 form-group">
+                        <label for="phone">Phone</label>
+                        <input type="text" id="phone"
+                               v-model="form.phone"
+                               :class="`form-control ${error(errors, 'name') ? 'is-invalid' : ''}`"
+                        >
+                        <div class="invalid-feedback" v-if="error(errors, 'phone')">
+                            {{ error(errors, 'phone') }}
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 form-group">
+                        <label for="email">Email</label>
+                        <input type="text" id="email"
+                               v-model="form.email"
+                               :class="`form-control ${error(errors, 'name') ? 'is-invalid' : ''}`"
+                        >
+                        <div class="invalid-feedback" v-if="error(errors, 'email')">
+                            {{ error(errors, 'email') }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea id="address"
+                              v-model="form.address"
+                              :class="`form-control ${error(errors, 'name') ? 'is-invalid' : ''}`"
+                    ></textarea>
+                    <div class="invalid-feedback" v-if="error(errors, 'address')">
+                        {{ error(errors, 'address') }}
+                    </div>
+                </div>
+                <div class="">
+                    <label for="">Total:</label>
+                    <b>{{ Math.round(total / rate) }} {{ currency }}</b>
+                </div>
+                <div class="mb-4">
+                    <label for="">Delivery cost:</label>
+                    <b>{{ Math.round(delivery / rate) }} {{ currency }}</b>
+                </div>
+                <div class="row">
+                    <div class="form-group col-12 col-lg-6">
+                        <button type="submit" class="form-control btn btn-success">
+                            <i v-if="loading" class="fas fa-spinner fa-spin"></i>
+                            <span v-else>Order now!</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</template>
+
+<script>
+
+    export default {
+        name: "OrderComponent",
+        props: {
+            currency: String|Number,
+            rate: String|Number,
+            total: String|Number
+        },
+        components: {
+
+        },
+        data: () => ({
+            form: {
+                name: '',
+                surname: '',
+                phone: '',
+                email: '',
+                address: ''
+            },
+            delivery: 12,
+            loading: false,
+            totalPrice: 0,
+            errors: {},
+            message: {}
+        }),
+        mounted() {
+
+        },
+        methods: {
+            error(errors, field) {
+
+                return errors.hasOwnProperty(field) ? errors[field].join(',') : ''
+
+            },
+            async order() {
+                this.loading = true
+                this.errors = {}
+                try {
+                    const {data} = await axios.post(`/api/order`, this.form)
+                    this.loading = false
+                    return data
+                }catch(error) {
+                    this.loading = false
+                    if(error.response.status === 419) {
+                        this.errors = error.response.data.errors
+                    }else {
+                        console.log('server error')
+                    }
+                }
+            }
+        }
+    }
+</script>
+
+<style scoped>
+
+</style>

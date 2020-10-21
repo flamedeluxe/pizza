@@ -73,6 +73,12 @@
         mounted() {
 
         },
+        watch: {
+            total: function (total) {
+                this.$emit('updateTotal', total)
+                this.$emit('updateCart')
+            }
+        },
         methods: {
             minus(item) {
                 item.quantity--

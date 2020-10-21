@@ -14,7 +14,7 @@
                     </big>
                     <div class="btn-group">
                         <button @click="addToCart" type="button" class="btn btn-sm btn-outline-secondary">
-                            <span class="material-icons">shopping_basket</span>
+                            <i class="fas fa-shopping-basket"></i>
                         </button>
                     </div>
                 </div>

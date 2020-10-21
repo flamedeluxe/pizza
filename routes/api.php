@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\ProductController;
+use App\Http\Controllers\Api\v1\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,4 @@ use App\Http\Controllers\Api\v1\ProductController;
 //});
 
 Route::resource('products', ProductController::class);
+Route::post('order', 'App\Http\Controllers\Api\v1\OrderController@index');
