@@ -14,12 +14,19 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
+                    <li :class="`nav-item ${currencyInner === '$' ? 'active' : ''}`">
+                        <a href="" @click.prevent="changeCurrency(`$`)" class="nav-link">$</a>
+                    </li>
+                    <li :class="`nav-item ${currencyInner === '€' ? 'active' : ''}`">
+                        <a href="" @click.prevent="changeCurrency(`€`)" class="nav-link">€</a>
+                    </li>
                     <li class="nav-item">
                         <router-link class="nav-link" :to="`login`">Login</router-link>
                     </li>
                     <li class="nav-item">
                         <router-link :to="`/cart`" class="nav-link">
                             <span class="material-icons">shopping_basket</span>
+                            <sup>{{ total }}</sup>
                         </router-link>
                     </li>
                 </ul>
@@ -30,7 +37,32 @@
 
 <script>
     export default {
-        name: "HeaderComponent"
+        name: "HeaderComponent",
+        props: {
+            total: 0,
+            currency: ''
+        },
+        data: () => ({
+            cart: {},
+            currencyInner: ''
+        }),
+        mounted() {
+            this.currencyInner = this.currency
+
+        },
+        methods: {
+            changeCurrency(currency) {
+                this.currencyInner = currency
+                this.$emit('updateCurrency', this.currencyInner)
+
+                if(localStorage.getItem('__cart') === null) return
+
+                const cart = JSON.parse(localStorage.getItem('__cart'))
+
+                cart.forEach(element => element.price / localStorage.getItem('__rate'));
+
+            }
+        }
     }
 </script>
 

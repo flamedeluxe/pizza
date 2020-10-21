@@ -25,5 +25,8 @@
         "vue": "^2.5.17",
         "vue-router": "^3.4.7",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "cart-localstorage": "^1.1.5"
     }
 }

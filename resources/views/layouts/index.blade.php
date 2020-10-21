@@ -23,16 +23,7 @@
 </head>
 <body>
 <div id="app">
-    <v-header></v-header>
-    <main>
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-12">
-                    <router-view></router-view>
-                </div>
-            </div>
-        </div>
-    </main>
+    <v-app></v-app>
 </div>
 </body>
 </html>

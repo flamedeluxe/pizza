@@ -6,14 +6,17 @@
                  data-holder-rendered="true">
             <div class="card-body">
                 <p class="card-title">{{ product.title }}</p>
-                <p class="card-text">{{ product.text }}</p>
+                <p class="card-text">{{ product.content }}</p>
                 <div class="d-flex justify-content-between align-items-center">
+
+                    <big>
+                        {{ price }} {{ currency }}
+                    </big>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">
+                        <button @click="addToCart" type="button" class="btn btn-sm btn-outline-secondary">
                             <span class="material-icons">shopping_basket</span>
                         </button>
                     </div>
-                    <small class="text-muted">{{ product.count }} items</small>
                 </div>
             </div>
         </div>
@@ -21,17 +24,43 @@
 </template>
 
 <script>
+    import {add, total} from "cart-localstorage";
+
     export default {
         props: {
-            products: Object
+            product: Object,
+            currency: String
         },
-        data () {
-            return {
-
+        data: () => ({
+            count: 0,
+            price: 0
+        }),
+        mounted() {
+            this.updatePrice()
+        },
+        watch: {
+            currency: function () {
+                this.updatePrice()
             }
         },
-        mounted() {
+        methods: {
+            async addToCart() {
+                this.count++
 
+                const p = {
+                    id: this.product.id,
+                    name: this.product.title,
+                    price: this.product.price,
+                    image: this.product.image,
+                }
+
+                add(p, 1)
+
+                this.$emit('updateCart')
+            },
+            updatePrice() {
+                this.price = Math.round(this.product.price / localStorage.getItem('__rate'))
+            }
         }
     }
 </script>

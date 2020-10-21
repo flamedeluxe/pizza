@@ -1,23 +1,46 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Example Component</div>
-
-                    <div class="card-body">
-                        I'm an example component.
-                    </div>
-                </div>
-            </div>
+    <div>
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th></th>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Remove</th>
+                </tr>
+                <tr v-for="item in cart" :key="item.id">
+                    <td></td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ Math.round(item.price / rate) }} {{ currency }}</td>
+                    <td>{{ Math.round(item.price / rate) * item.quantity }} {{ currency }}</td>
+                    <td><button type="button" class="btn btn-danger">&times;</button></td>
+                </tr>
+            </table>
         </div>
     </div>
 </template>
 
 <script>
     export default {
+        props: {
+            currency: String,
+            cart: Object|Array,
+            rate: String|Number
+        },
+        data: () => ({
+
+        }),
+        computed: {
+
+        },
         mounted() {
-            console.log('Component mounted.')
+
+        },
+        methods: {
+
         }
     }
 </script>

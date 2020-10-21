@@ -18,32 +18,38 @@ class DatabaseSeeder extends Seeder
             [
                 'title' => 'MADISON',
                 'text' => 'Prosciutto and housemade pineapple-jalapeño chutney on white.',
-                'image' => 'storage/images/pizza-1150031_640.jpg'
+                'image' => 'images/pizza-1150031_640.jpg',
+                'price' => 12
             ],
             [
                 'title' => 'WHITAKER',
                 'text' => 'Housemade pesto, garlic confit, cauliflower, and goat cheese.',
-                'image' => 'storage/images/pizza-1209748_640.jpg'
+                'image' => 'images/pizza-1209748_640.jpg',
+                'price' => 14
             ],
             [
                 'title' => 'RIALTO',
                 'text' => 'Housemade sausage, caramelized onion and goat cheese on organic crushed tomato.',
-                'image' => 'storage/images/pizza-1150031_640.jpg'
+                'image' => 'images/pizza-1150031_640.jpg',
+                'price' => 16
             ],
             [
                 'title' => 'HIGGINS AVE',
                 'text' => 'Crushed walnut, gorgonzola and red onion on white.',
-                'image' => 'storage/images/pizza-1209748_640.jpg'
+                'image' => 'images/pizza-1209748_640.jpg',
+                'price' => 11
             ],
             [
                 'title' => 'MESSINA',
                 'text' => 'Pickled pepper, ricotta, sopressata and fresh basil on organic crushed tomato.',
-                'image' => 'storage/images/pizza-1150031_640.jpg'
+                'image' => 'images/pizza-1150031_640.jpg',
+                'price' => 9
             ],
             [
                 'title' => 'MACLAY',
                 'text' => 'Crispy chicken, red onion, gorgonzola, celery and buffalo sauce on bbq.',
-                'image' => 'storage/images/pizza-1209748_640.jpg'
+                'image' => 'images/pizza-1209748_640.jpg',
+                'price' => 17
             ]
         ];
 
@@ -52,6 +58,7 @@ class DatabaseSeeder extends Seeder
                 'title' => $item['title'],
                 'content' => $item['text'],
                 'image' => $item['image'],
+                'price' => $item['price'],
             ]);
         }
 
