@@ -5,7 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CreateProducts extends Model
+class Payment extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
+
+    public function orders()
+    {
+        return $this->hasMany('App\Order');
+    }
 }
