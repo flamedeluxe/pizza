@@ -2,21 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3fbbdde2-d5ba-457c-909a-9bed435548ec" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/ProductController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Status.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_20_093058_create_orders_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_21_061905_create_payments.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_21_061944_create_deliveries.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_21_064640_create_status.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/ProductSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/CreateOrders.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/CreateOrdersTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Payment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/CreateProducts.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Delivery.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/CreateProductsTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_20_093044_create_create_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_20_093044_create_products_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_20_093058_create_create_orders_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_21_065528_create_order_product_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_20_093058_create_orders_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_20_093058_create_orders_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_21_061905_create_payments.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_21_061905_create_payments_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_21_061944_create_deliveries.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_21_061944_create_deliveries_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_21_064640_create_status.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_21_064640_create_statuses_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/ProductSeeder.php" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -201,8 +194,16 @@
       <updated>1603183287214</updated>
       <workItem from="1603183288334" duration="741000" />
       <workItem from="1603185800654" duration="5141000" />
-      <workItem from="1603217074322" duration="4072000" />
+      <workItem from="1603217074322" duration="6579000" />
     </task>
+    <task id="LOCAL-00001" summary="(new) Migrations created for products, payments, deliveries, statuses,&#10;order_products, orders&#10;(new) Models created: Delivery, Order, Payment, Product, Status">
+      <created>1603263555609</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1603263555609</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,5 +222,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="(new) Migrations created for products, payments, deliveries, statuses,&#10;order_products, orders&#10;(new) Models created: Delivery, Order, Payment, Product, Status" />
+    <option name="LAST_COMMIT_MESSAGE" value="(new) Migrations created for products, payments, deliveries, statuses,&#10;order_products, orders&#10;(new) Models created: Delivery, Order, Payment, Product, Status" />
   </component>
 </project>
