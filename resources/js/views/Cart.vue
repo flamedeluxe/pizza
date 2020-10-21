@@ -6,8 +6,11 @@
             :cart="cart"
             :rate="rate"
             :currency="currency"
+            @removeItem="removeItem"
         >
         </cart>
+
+
     </div>
 </template>
 
@@ -33,6 +36,9 @@
             getCart() {
                 const items = JSON.parse(localStorage.getItem('__cart'))
                 this.cart = items
+            },
+            removeItem() {
+                this.getCart()
             }
         }
     }
