@@ -38,6 +38,9 @@
         mounted() {
             this.updatePrice()
         },
+        components: {
+
+        },
         watch: {
             currency: function () {
                 this.updatePrice()
@@ -55,6 +58,8 @@
                 }
 
                 add(p, 1)
+
+                this.$toast.success('Product add to cart');
 
                 this.$emit('updateCart')
             },

@@ -40,15 +40,15 @@
         name: "HeaderComponent",
         props: {
             total: 0,
-            currency: ''
+            currency: String
         },
         data: () => ({
             cart: {},
-            currencyInner: ''
+            currencyInner: '',
+            animate: false
         }),
         mounted() {
             this.currencyInner = this.currency
-
         },
         methods: {
             changeCurrency(currency) {

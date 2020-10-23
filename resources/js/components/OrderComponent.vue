@@ -10,7 +10,7 @@
                                v-model="form.name"
                                :class="`form-control ${error(errors, 'name') ? 'is-invalid' : ''}`"
                         >
-                        <div class="invalid-feedback" v-if="error(errors, 'name')">
+                        <div class="invalid-feedback">
                             {{ error(errors, 'name') }}
                         </div>
                     </div>
@@ -18,7 +18,7 @@
                         <label for="surname">Surname</label>
                         <input type="text" id="surname"
                                v-model="form.surname"
-                               :class="`form-control ${error(errors, 'name') ? 'is-invalid' : ''}`"
+                               :class="`form-control ${error(errors, 'surname') ? 'is-invalid' : ''}`"
                         >
                         <div class="invalid-feedback" >
                             {{ error(errors, 'surname') }}
@@ -30,9 +30,9 @@
                         <label for="phone">Phone</label>
                         <input type="text" id="phone"
                                v-model="form.phone"
-                               :class="`form-control ${error(errors, 'name') ? 'is-invalid' : ''}`"
+                               :class="`form-control ${error(errors, 'phone') ? 'is-invalid' : ''}`"
                         >
-                        <div class="invalid-feedback" v-if="error(errors, 'phone')">
+                        <div class="invalid-feedback">
                             {{ error(errors, 'phone') }}
                         </div>
                     </div>
@@ -40,9 +40,9 @@
                         <label for="email">Email</label>
                         <input type="text" id="email"
                                v-model="form.email"
-                               :class="`form-control ${error(errors, 'name') ? 'is-invalid' : ''}`"
+                               :class="`form-control ${error(errors, 'email') ? 'is-invalid' : ''}`"
                         >
-                        <div class="invalid-feedback" v-if="error(errors, 'email')">
+                        <div class="invalid-feedback">
                             {{ error(errors, 'email') }}
                         </div>
                     </div>
@@ -51,19 +51,19 @@
                     <label for="address">Address</label>
                     <textarea id="address"
                               v-model="form.address"
-                              :class="`form-control ${error(errors, 'name') ? 'is-invalid' : ''}`"
+                              :class="`form-control ${error(errors, 'address') ? 'is-invalid' : ''}`"
                     ></textarea>
-                    <div class="invalid-feedback" v-if="error(errors, 'address')">
+                    <div class="invalid-feedback">
                         {{ error(errors, 'address') }}
                     </div>
                 </div>
                 <div class="">
-                    <label for="">Total:</label>
-                    <b>{{ Math.round(total / rate) }} {{ currency }}</b>
-                </div>
-                <div class="mb-4">
                     <label for="">Delivery cost:</label>
                     <b>{{ Math.round(delivery / rate) }} {{ currency }}</b>
+                </div>
+                <div class="mb-4">
+                    <label for="">Total:</label>
+                    <b>{{ Math.round(total / rate) + Math.round(delivery / rate) }} {{ currency }}</b>
                 </div>
                 <div class="row">
                     <div class="form-group col-12 col-lg-6">
@@ -107,11 +107,18 @@
         mounted() {
 
         },
+        watch: {
+            form: {
+                deep: true,
+                immediate: true,
+                handler() {
+                    this.errors = {}
+                }
+            }
+        },
         methods: {
             error(errors, field) {
-
                 return errors.hasOwnProperty(field) ? errors[field].join(',') : ''
-
             },
             async order() {
                 this.loading = true

@@ -46,7 +46,8 @@
 </template>
 
 <script>
-    import {quantity, remove} from "cart-localstorage";
+    import {quantity, remove, total} from "cart-localstorage";
+
 
     export default {
         props: {
@@ -57,18 +58,18 @@
         data: () => ({
 
         }),
-        components: {
-            remove, quantity
-        },
         computed: {
             emptyCart: function () {
                 return this.cart.length === 0
             },
             total: function () {
                 let total = 0
-                if(this.cart.length) this.cart.forEach(element => total += Math.round(element.price * element.quantity / this.rate))
+                if(this.cart.length) this.cart.forEach(element => total += Math.round(element.price / this.rate) * element.quantity)
                 return total
             }
+        },
+        components: {
+
         },
         mounted() {
 

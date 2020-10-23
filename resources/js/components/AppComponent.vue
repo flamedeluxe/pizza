@@ -55,7 +55,6 @@
                 const cart = JSON.parse(localStorage.getItem('__cart'))
 
                 cart.forEach(element => total += element.quantity);
-
                 this.total = total
             },
             updateCurrency(currency) {

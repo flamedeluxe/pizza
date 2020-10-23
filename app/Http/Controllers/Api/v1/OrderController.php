@@ -17,7 +17,7 @@ class OrderController extends Controller
                 'name' => ['required'],
                 'surname' => ['required'],
                 'phone' => ['required'],
-                'email' => ['required'],
+                'email' => ['required', 'email:rfc'],
                 'address' => ['required']
             ]
         );

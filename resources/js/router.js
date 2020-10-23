@@ -5,6 +5,7 @@ Vue.use(vueRouter);
 
 import Index from "./views/Index";
 import Cart from "./views/Cart";
+import PageNotFound from  "./views/PageNotFound";
 
 const routes = [
     {
@@ -14,6 +15,13 @@ const routes = [
     {
         path: '/cart',
         component: Cart
+    },
+    {
+        path: "*",
+        component: PageNotFound,
+        meta: {
+            robots: "no-follow"
+        }
     },
 ];
 
