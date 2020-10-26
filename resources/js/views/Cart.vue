@@ -1,24 +1,29 @@
 <template>
     <div>
-        <h1 class="mb-5">Cart</h1>
+        <div v-if="!complete">
+            <h1 class="mb-5">Cart</h1>
+            <cart-component
+                :cart="cart"
+                :rate="rate"
+                :currency="currency"
+                @removeItem="removeItem"
+                @updateTotal="updateTotal"
+                @updateCart="updateCart"
+            >
+            </cart-component>
 
-        <cart-component
-            :cart="cart"
-            :rate="rate"
-            :currency="currency"
-            @removeItem="removeItem"
-            @updateTotal="updateTotal"
-            @updateCart="updateCart"
-        >
-        </cart-component>
-
-        <order-component
-            v-if="total"
-            :rate="rate"
-            :total="total"
-            :currency="currency"
-            @cleanCart="cleanCart"
-        ></order-component>
+            <order-component
+                v-if="total"
+                :rate="rate"
+                :total="total"
+                :currency="currency"
+                @cleanCart="cleanCart"
+            ></order-component>
+        </div>
+        <div v-else>
+            <h1 class="mb-5">Well done!</h1>
+            Your order has been received
+        </div>
     </div>
 </template>
 
@@ -33,6 +38,7 @@
             total: 0
         }),
         props: {
+            complete: Boolean,
             currency: String,
             rate: String|Number
         },

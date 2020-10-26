@@ -8,23 +8,51 @@ import Cart from "./views/Cart";
 import PageNotFound from  "./views/PageNotFound";
 import Register from "./views/Register";
 import Login from "./views/Login";
+import Orders from "./views/Orders";
 
 const routes = [
     {
         path: '/',
-        component: Index
+        component: Index,
+        meta: {
+            title: 'Catalog'
+        }
     },
     {
         path: '/cart',
-        component: Cart
+        component: Cart,
+        meta: {
+            title: 'Cart'
+        }
     },
     {
         path: '/login',
-        component: Login
+        component: Login,
+        name: 'login',
+        meta: {
+            title: 'Login'
+        }
     },
     {
         path: '/register',
-        component: Register
+        component: Register,
+        meta: {
+            title: 'Register'
+        }
+    },
+    {
+        path: '/my-orders',
+        component: Orders,
+        beforeEnter: (to, from, next) => {
+            if(!localStorage.getItem('token')) {
+                next({ name: 'login' })
+            }else {
+                next()
+            }
+        },
+        meta: {
+            title: 'Orders'
+        }
     },
     {
         path: "*",

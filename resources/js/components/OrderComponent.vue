@@ -96,7 +96,9 @@
                 surname: '',
                 phone: '',
                 email: '',
-                address: ''
+                address: '',
+                user: '',
+                cart: {}
             },
             delivery: 12,
             loading: false,
@@ -121,6 +123,8 @@
                 return errors.hasOwnProperty(field) ? errors[field].join(',') : ''
             },
             async order() {
+                this.form.cart = localStorage.getItem('__cart')
+                this.form.user = JSON.parse(localStorage.getItem('user'))
                 this.loading = true
                 this.errors = {}
                 try {

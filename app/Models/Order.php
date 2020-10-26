@@ -23,23 +23,28 @@ class Order extends Model
 
     public function products()
     {
-        return $this->belongsToMany('App\Product')
-            ->withPivot('count', 'price', 'id')
+        return $this->belongsToMany('App\Models\Product')
+            ->withPivot('count', 'id')
             ->withTimestamps();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
     }
 
     public function status()
     {
-        return $this->belongsTo('App\Status');
+        return $this->belongsTo('App\Models\Status');
     }
 
     public function delivery()
     {
-        return $this->belongsTo('App\Delivery');
+        return $this->belongsTo('App\Models\Delivery');
     }
 
     public function payment()
     {
-        return $this->belongsTo('App\Payment');
+        return $this->belongsTo('App\Models\Payment');
     }
 }

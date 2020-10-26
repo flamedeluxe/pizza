@@ -13,26 +13,10 @@ use Illuminate\Support\Str;
 class AuthController extends Controller
 {
 
-    public function init($token)
+    public function init()
     {
-        return Auth::id();
-    }
 
-    /**
-     * Update the authenticated user's API token.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function update(Request $request)
-    {
-        $token = Str::random(80);
-
-        $request->user()->forceFill([
-            'api_token' => hash('sha256', $token),
-        ])->save();
-
-        return $token;
+        return response()->json(Auth::user());
     }
 
     /**
@@ -49,7 +33,8 @@ class AuthController extends Controller
             [
                 'name' => ['required'],
                 'email' => ['required', 'email:rfc'],
-                'password' => ['required']
+                'password' => ['required'],
+                'password_repeat' => ['required', 'same:password']
             ]
         );
 
@@ -67,12 +52,14 @@ class AuthController extends Controller
             ])->setStatusCode('419');
         }
 
-        return User::create([
+        $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')),
-            'api_token' => Str::random(60),
+            'password' => Hash::make($request->input('password'))
         ]);
+        $token = $user->createToken('token-name');
+
+        return response()->json(compact(['user', 'token']))->setStatusCode('200');
     }
 
     /**
@@ -90,12 +77,24 @@ class AuthController extends Controller
                 'status' => false,
                 'message' => 'You cannot sign with those credentials',
                 'errors' => 'Unauthorised'
-            ], 401);
+            ], 419);
         }
+
+        $user = User::where('email', $request->input('email'))->first();
+        $token = $user->createToken('token-name');
 
         return response()->json([
             'status' => true,
+            'user' => Auth::id(),
             'message' => 'You are logged',
+            'token' => $token
         ], 200);
+    }
+
+
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+        return true;
     }
 }

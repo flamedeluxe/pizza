@@ -107,7 +107,7 @@ class DatabaseSeeder extends Seeder
 
         $deliveries = [
             [
-                'title' => 'carryout'
+                'title' => 'pickup'
             ],
             [
                 'title' => 'delivery'

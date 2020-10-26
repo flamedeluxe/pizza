@@ -1,6 +1,6 @@
 <template>
     <div class="row text-center">
-        <form class="form-signin col-12 col-lg-4 offset-lg-4">
+        <form class="form-signin col-12 col-lg-4 offset-lg-4" @submit.prevent="submit">
             <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
             <div class="form-group">
                 <label for="inputName" class="sr-only">Name</label>
@@ -47,7 +47,10 @@
                 </div>
             </div>
             <div class="form-group">
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+                <button type="submit" class="btn btn-lg btn-primary btn-block">
+                    <i v-if="loading" class="fas fa-spinner fa-spin"></i>
+                    <span v-else>Sign up!</span>
+                </button>
             </div>
         </form>
     </div>
@@ -67,16 +70,34 @@
             message: '',
             loading: false
         }),
+        mounted() {
+
+        },
         methods: {
+            error(errors, field) {
+                return errors.hasOwnProperty(field) ? errors[field].join(',') : ''
+            },
             async submit() {
                 this.loading = true
                 try {
-                    const {data} = await axios.post(`/api/register`)
-                    console.log(data)
+                    const {data} = await axios.post(`/api/register`, this.form)
+                    localStorage.setItem('token', data.token.plainTextToken)
+                    localStorage.setItem('user', JSON.stringify(data.user))
+
                     this.loading = false
+
+                    this.$emit('setUser')
+                    await this.$router.push('my-orders')
+
                     return data
-                }catch (e) {
-                    console.log('server error')
+                }catch (error) {
+                    this.loading = false
+                    if(error.response.status === 419) {
+                        this.errors = error.response.data.errors
+                        if(typeof this.errors === 'string') this.$toast.error(this.errors);
+                    }else {
+                        console.log('server error')
+                    }
                 }
             }
         }

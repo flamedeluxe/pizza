@@ -1,10 +1,11 @@
 <template>
     <div>
         <v-header
+            v-if="!loading"
             :total="total"
             :currency="currency"
+            :user="user"
             @updateCurrency="updateCurrency">
-
         </v-header>
         <main>
             <div class="container mt-5">
@@ -13,10 +14,12 @@
                         <router-view
                             @updateCart="updateCart"
                             @cleanCart="cleanCart"
+                            @setUser="setUser"
+                            @logout="logout"
                             :currency="currency"
                             :rate="rate"
+                            :complete="complete"
                         >
-
                         </router-view>
                     </div>
                 </div>
@@ -34,12 +37,33 @@
             total: 0,
             currency: localStorage.getItem('__currency'),
             rate: localStorage.getItem('__rate'),
+            user: null,
+            loading: true,
+            complete: false
         }),
         mounted() {
+            this.loading = false
             this.getCurrency()
             this.updateCart()
+            this.setUser()
         },
         methods: {
+            async setUser() {
+                if(!localStorage.getItem('token')) return
+                try {
+                    axios.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem('token')
+                    const {data} = await axios.post('/api/user')
+                    this.user = data
+                }catch (error) {
+                    if (error.response.status === 401) {
+                        localStorage.removeItem('user')
+                        localStorage.removeItem('token')
+                    }
+                    else {
+                        console.log('server error')
+                    }
+                }
+            },
             getCurrency() {
                 this.currency = localStorage.getItem('__currency') !== null
                     ? localStorage.getItem('__currency')
@@ -65,6 +89,8 @@
 
                 cart.forEach(element => remove(element.id));
                 this.total = 0
+
+                this.complete = true
             },
             updateCurrency(currency) {
                 const rate = currency === '$' ? 1 : 1.19
@@ -72,6 +98,9 @@
                 localStorage.setItem('__rate', rate)
                 this.currency = currency
                 this.rate = rate
+            },
+            logout() {
+                this.user = null
             }
         }
     }

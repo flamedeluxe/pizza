@@ -8,13 +8,19 @@
                 <p class="card-title">{{ product.title }}</p>
                 <p class="card-text">{{ product.content }}</p>
                 <div class="d-flex justify-content-between align-items-center">
-
                     <big>
                         {{ price }} {{ currency }}
                     </big>
                     <div class="btn-group">
-                        <button @click="addToCart" type="button" class="btn btn-sm btn-outline-secondary">
+                        <button v-if="!inCart" @click="plus" type="button" class="btn btn-md btn-outline-secondary">
                             <i class="fas fa-shopping-basket"></i>
+                        </button>
+                        <button v-if="inCart" @click="minus" type="button" class="btn btn-md btn-dark">
+                            -
+                        </button>
+                        <input v-if="inCart" type="number" style="width:70px" readonly v-model="count" class="form-control">
+                        <button v-if="inCart" @click="plus" type="button" class="btn btn-md btn-dark">
+                            +
                         </button>
                     </div>
                 </div>
@@ -24,7 +30,7 @@
 </template>
 
 <script>
-    import {add, total} from "cart-localstorage";
+    import {add, quantity, remove} from "cart-localstorage";
 
     export default {
         props: {
@@ -33,10 +39,12 @@
         },
         data: () => ({
             count: 0,
-            price: 0
+            price: 0,
+            inCart: false
         }),
         mounted() {
             this.updatePrice()
+            this.checkInCart()
         },
         components: {
 
@@ -47,7 +55,37 @@
             }
         },
         methods: {
-            async addToCart() {
+            async checkInCart() {
+                if(localStorage.getItem('__cart') === null) return false
+
+                const cart = JSON.parse(localStorage.getItem('__cart'))
+
+                let found = false
+                cart.forEach((element) => {
+                    if(element.id === this.product.id) {
+                        found = true
+                        this.count = element.quantity
+                    }
+                })
+
+                this.inCart = found
+            },
+            async minus() {
+                if(this.count > 0) {
+                    this.count--
+                    quantity(this.product.id, -1)
+                }else {
+                    remove(this.product.id)
+                }
+
+                this.$toast.success('Product removed from cart');
+
+                this.$emit('removeItem')
+                this.$emit('updateCart')
+
+                this.checkInCart()
+            },
+            async plus() {
                 this.count++
 
                 const p = {
@@ -58,6 +96,8 @@
                 }
 
                 add(p, 1)
+
+                this.checkInCart()
 
                 this.$toast.success('Product added to cart');
 

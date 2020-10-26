@@ -17,11 +17,14 @@
                     <li class="nav-item">
                         <router-link class="nav-link" :to="`/`">Catalog</router-link>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" v-if="user === null">
                         <router-link class="nav-link" :to="`register`">Sign up</router-link>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" v-if="user === null">
                         <router-link class="nav-link" :to="`login`">Sign in</router-link>
+                    </li>
+                    <li class="nav-item" v-if="user !== null">
+                        <router-link class="nav-link" :to="`my-orders`">My orders</router-link>
                     </li>
                     <li :class="`nav-item ${currencyInner === '$' ? 'active' : ''}`">
                         <a href="" @click.prevent="changeCurrency(`$`)" class="nav-link">$</a>
@@ -46,12 +49,14 @@
         name: "HeaderComponent",
         props: {
             total: 0,
-            currency: String
+            currency: String,
+            user: null
         },
         data: () => ({
             cart: {},
             currencyInner: '',
-            animate: false
+            animate: false,
+            isAuth: false
         }),
         mounted() {
             this.currencyInner = this.currency
