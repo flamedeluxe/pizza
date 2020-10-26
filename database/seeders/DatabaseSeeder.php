@@ -50,6 +50,18 @@ class DatabaseSeeder extends Seeder
                 'text' => 'Crispy chicken, red onion, gorgonzola, celery and buffalo sauce on bbq.',
                 'image' => 'images/pizza-1209748_640.jpg',
                 'price' => 17
+            ],
+            [
+                'title' => 'PUGLIESE',
+                'text' => 'Crispy chicken, red onion, gorgonzola, celery and buffalo sauce on bbq.',
+                'image' => 'images/pizza-1150031_640.jpg',
+                'price' => 19
+            ],
+            [
+                'title' => 'ROMANO',
+                'text' => 'Crispy chicken, red onion, gorgonzola, celery and buffalo sauce on bbq.',
+                'image' => 'images/pizza-1209748_640.jpg',
+                'price' => 22
             ]
         ];
 

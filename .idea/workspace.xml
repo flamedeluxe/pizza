@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3fbbdde2-d5ba-457c-909a-9bed435548ec" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/Orders.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/Orders.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -218,7 +218,7 @@
       <workItem from="1603452811409" duration="3184000" />
       <workItem from="1603546408304" duration="596000" />
       <workItem from="1603559881244" duration="35456000" />
-      <workItem from="1603729220774" duration="2738000" />
+      <workItem from="1603729220774" duration="3215000" />
     </task>
     <task id="LOCAL-00001" summary="(new) Migrations created for products, payments, deliveries, statuses,&#10;order_products, orders&#10;(new) Models created: Delivery, Order, Payment, Product, Status">
       <created>1603263555609</created>
@@ -297,7 +297,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603731611455</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="(fix) order total in user account">
+      <created>1603732021668</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1603732021668</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -329,6 +336,7 @@
     <MESSAGE value="(fix) AppServiceProvider method boot" />
     <MESSAGE value="(fix) Login.vue fix errors blocks" />
     <MESSAGE value="(new) page done&#10;(new) regex for EU phone format&#10;(fix) default order delivery set to &quot;delivery&quot;&#10;(new) in order component set user fields if user is logged" />
-    <option name="LAST_COMMIT_MESSAGE" value="(new) page done&#10;(new) regex for EU phone format&#10;(fix) default order delivery set to &quot;delivery&quot;&#10;(new) in order component set user fields if user is logged" />
+    <MESSAGE value="(fix) order total in user account" />
+    <option name="LAST_COMMIT_MESSAGE" value="(fix) order total in user account" />
   </component>
 </project>
