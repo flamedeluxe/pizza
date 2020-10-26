@@ -31,10 +31,10 @@ class AuthController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'name' => ['required'],
-                'email' => ['required', 'email:rfc'],
-                'password' => ['required'],
-                'password_repeat' => ['required', 'same:password']
+                'name' => ['required', 'max:100'],
+                'email' => ['required', 'email:rfc', 'max:100'],
+                'password' => ['required', 'max:50'],
+                'password_repeat' => ['required', 'same:password', 'max:50']
             ]
         );
 
@@ -70,6 +70,20 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'email' => ['required', 'email:rfc', 'max:100'],
+                'password' => ['required', 'max:50'],
+            ]
+        );
+        if($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'errors' => $validator->messages()
+            ])->setStatusCode('419');
+        }
+
         $credentials = $request->only('email', 'password');
 
         if (!Auth::attempt($credentials)) {

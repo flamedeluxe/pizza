@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3fbbdde2-d5ba-457c-909a-9bed435548ec" name="Default Changelist" comment="(new) AuthController">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/innoscripta.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/innoscripta.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="3fbbdde2-d5ba-457c-909a-9bed435548ec" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/Register.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -222,7 +221,7 @@
       <workItem from="1603376846364" duration="1511000" />
       <workItem from="1603452811409" duration="3184000" />
       <workItem from="1603546408304" duration="596000" />
-      <workItem from="1603559881244" duration="33971000" />
+      <workItem from="1603559881244" duration="34803000" />
     </task>
     <task id="LOCAL-00001" summary="(new) Migrations created for products, payments, deliveries, statuses,&#10;order_products, orders&#10;(new) Models created: Delivery, Order, Payment, Product, Status">
       <created>1603263555609</created>
@@ -280,7 +279,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603718937533</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="(fix) AppServiceProvider method boot">
+      <created>1603719760204</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1603719760204</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,6 +315,7 @@
     <MESSAGE value="(new) front: added notifications&#10;(new) 404 page" />
     <MESSAGE value="(new) AuthController" />
     <MESSAGE value="(new) show orders in user account&#10;(new) logout method back\front" />
-    <option name="LAST_COMMIT_MESSAGE" value="(new) show orders in user account&#10;(new) logout method back\front" />
+    <MESSAGE value="(fix) AppServiceProvider method boot" />
+    <option name="LAST_COMMIT_MESSAGE" value="(fix) AppServiceProvider method boot" />
   </component>
 </project>

@@ -49,7 +49,7 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-lg btn-primary btn-block">
                     <i v-if="loading" class="fas fa-spinner fa-spin"></i>
-                    <span v-else>Sign up!</span>
+                    <span v-else>Sign up</span>
                 </button>
             </div>
         </form>

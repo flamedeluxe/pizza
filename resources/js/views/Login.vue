@@ -30,7 +30,10 @@
                 </label>
             </div>
             <div class="form-group">
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <button type="submit" class="btn btn-lg btn-primary btn-block">
+                    <i v-if="loading" class="fas fa-spinner fa-spin"></i>
+                    <span v-else>Sign in</span>
+                </button>
             </div>
         </form>
     </div>
@@ -53,6 +56,7 @@
                 return errors.hasOwnProperty(field) ? errors[field].join(',') : ''
             },
             async submit() {
+                this.loading = true
                 try {
                     const {data} = await axios.post(`/api/login`, this.form)
                     localStorage.setItem('token', data.token.plainTextToken)
@@ -66,7 +70,10 @@
                     this.loading = false
                     if(error.response.status === 419) {
                         this.message = error.response.data.message
-                        this.$toast.error(this.message);
+                        if(this.message) this.$toast.error(this.message);
+
+                        this.errors = error.response.data.errors
+                        if(typeof this.errors === 'string') this.$toast.error(this.errors);
                     }else {
                         console.log('server error')
                     }

@@ -2,7 +2,8 @@
 
 - composer install
 - php artisan migrate:fresh --seed
-- npm install 
+- npm install
+- php artisan key:generate 
 
 ## Build with
 
