@@ -14,14 +14,20 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <router-link class="nav-link" :to="`/`">Catalog</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" :to="`register`">Sign up</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" :to="`login`">Sign in</router-link>
+                    </li>
                     <li :class="`nav-item ${currencyInner === '$' ? 'active' : ''}`">
                         <a href="" @click.prevent="changeCurrency(`$`)" class="nav-link">$</a>
                     </li>
                     <li :class="`nav-item ${currencyInner === '€' ? 'active' : ''}`">
                         <a href="" @click.prevent="changeCurrency(`€`)" class="nav-link">€</a>
-                    </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link" :to="`login`">Login</router-link>
                     </li>
                     <li class="nav-item">
                         <router-link :to="`/cart`" class="nav-link">

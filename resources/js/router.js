@@ -6,6 +6,8 @@ Vue.use(vueRouter);
 import Index from "./views/Index";
 import Cart from "./views/Cart";
 import PageNotFound from  "./views/PageNotFound";
+import Register from "./views/Register";
+import Login from "./views/Login";
 
 const routes = [
     {
@@ -15,6 +17,14 @@ const routes = [
     {
         path: '/cart',
         component: Cart
+    },
+    {
+        path: '/login',
+        component: Login
+    },
+    {
+        path: '/register',
+        component: Register
     },
     {
         path: "*",

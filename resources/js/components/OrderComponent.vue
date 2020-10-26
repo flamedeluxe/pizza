@@ -126,6 +126,10 @@
                 try {
                     const {data} = await axios.post(`/api/order`, this.form)
                     this.loading = false
+                    this.form = {}
+                    this.$emit('cleanCart')
+
+                    this.$toast.success(data.message);
                     return data
                 }catch(error) {
                     this.loading = false

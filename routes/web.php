@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,12 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
-
 //Auth::routes();
-
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 Route::get('/{any}', function () {
     return view('layouts.index');
 })->where('any', '.*');
+

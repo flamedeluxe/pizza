@@ -42,4 +42,9 @@ class OrderController extends Controller
             'message' => 'Your order have been received'
         ]);
     }
+
+    public function list()
+    {
+
+    }
 }

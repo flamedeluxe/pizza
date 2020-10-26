@@ -27,6 +27,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "@websanova/vue-auth": "^3.3.8",
         "cart-localstorage": "^1.1.5",
         "vue-toast-notification": "^0.5.4"
     }

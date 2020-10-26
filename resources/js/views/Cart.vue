@@ -17,6 +17,7 @@
             :rate="rate"
             :total="total"
             :currency="currency"
+            @cleanCart="cleanCart"
         ></order-component>
     </div>
 </template>
@@ -52,6 +53,10 @@
             },
             removeItem() {
                 this.getCart()
+            },
+            cleanCart() {
+                this.cart = {}
+                this.$emit('cleanCart')
             },
             updateCart() {
                 this.$emit('updateCart')

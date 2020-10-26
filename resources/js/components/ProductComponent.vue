@@ -59,7 +59,7 @@
 
                 add(p, 1)
 
-                this.$toast.success('Product add to cart');
+                this.$toast.success('Product added to cart');
 
                 this.$emit('updateCart')
             },

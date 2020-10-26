@@ -12,6 +12,7 @@
                     <div class="col-12">
                         <router-view
                             @updateCart="updateCart"
+                            @cleanCart="cleanCart"
                             :currency="currency"
                             :rate="rate"
                         >
@@ -25,6 +26,8 @@
 </template>
 
 <script>
+    import {destroy, remove} from "cart-localstorage";
+
     export default {
         name: "AppComponent",
         data: () => ({
@@ -56,6 +59,12 @@
 
                 cart.forEach(element => total += element.quantity);
                 this.total = total
+            },
+            cleanCart() {
+                const cart = JSON.parse(localStorage.getItem('__cart'))
+
+                cart.forEach(element => remove(element.id));
+                this.total = 0
             },
             updateCurrency(currency) {
                 const rate = currency === '$' ? 1 : 1.19

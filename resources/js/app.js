@@ -30,6 +30,7 @@ Vue.component('v-app', require('./components/AppComponent').default);
  */
 
 import router from "./router";
+
 import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-default.css';
 Vue.use(VueToast);

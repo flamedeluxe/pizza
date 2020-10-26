@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="table-responsive">
-            <table class="table">
+            <table class="table" v-if="total !== 0">
                 <tr>
                     <th></th>
                     <th>Item</th>
@@ -10,12 +10,7 @@
                     <th>Total</th>
                     <th>Remove</th>
                 </tr>
-                <tr v-if="emptyCart">
-                    <td colspan="6">
-                        Cart is empty, <router-link :to="`/`">buy pizza now!</router-link>
-                    </td>
-                </tr>
-                <tr v-else v-for="item in cart" :key="item.id">
+                <tr v-for="item in cart" :key="item.id">
                     <td><img :src="item.image" width="80" alt=""></td>
                     <td>{{ item.name }}</td>
                     <td>
@@ -41,6 +36,9 @@
                     <td></td>
                 </tr>
             </table>
+            <div v-else>
+                Cart is empty, <router-link :to="`/`">buy pizza now!</router-link>
+            </div>
         </div>
     </div>
 </template>
@@ -59,9 +57,6 @@
 
         }),
         computed: {
-            emptyCart: function () {
-                return this.cart.length === 0
-            },
             total: function () {
                 let total = 0
                 if(this.cart.length) this.cart.forEach(element => total += Math.round(element.price / this.rate) * element.quantity)
