@@ -5,6 +5,7 @@ Vue.use(vueRouter);
 
 import Index from "./views/Index";
 import Cart from "./views/Cart";
+import Done from "./views/Done";
 import PageNotFound from  "./views/PageNotFound";
 import Register from "./views/Register";
 import Login from "./views/Login";
@@ -41,6 +42,13 @@ const routes = [
         }
     },
     {
+        path: '/done',
+        component: Done,
+        meta: {
+            title: 'Done'
+        }
+    },
+    {
         path: '/my-orders',
         component: Orders,
         beforeEnter: (to, from, next) => {
@@ -51,13 +59,14 @@ const routes = [
             }
         },
         meta: {
-            title: 'Orders'
+            title: 'My orders'
         }
     },
     {
         path: "*",
         component: PageNotFound,
         meta: {
+            title: '404',
             robots: "no-follow"
         }
     },

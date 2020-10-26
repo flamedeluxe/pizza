@@ -20,7 +20,7 @@ class OrderController extends Controller
             [
                 'name' => ['required'],
                 'surname' => ['required'],
-                'phone' => ['required'],
+                'phone' => ['required', 'regex:/^(?:\+\d{1,3}|0\d{1,3}|00\d{1,2})?(?:\s?\(\d+\))?(?:[-\/\s.]|\d)+$/'],
                 'email' => ['required', 'email:rfc'],
                 'address' => ['required']
             ]
@@ -44,11 +44,16 @@ class OrderController extends Controller
 
         $cart = json_decode($request->input('cart'));
 
+        $total = 0;
         foreach ($cart as $item) {
             $order->products()->attach($item->id, [
                 'count' => $item->quantity
             ]);
+            $total += $item->price;
         }
+
+        $order->total = $total;
+        $order->save();
 
         return response()->json([
             'status' => true,

@@ -18,7 +18,6 @@
                             @logout="logout"
                             :currency="currency"
                             :rate="rate"
-                            :complete="complete"
                         >
                         </router-view>
                     </div>
@@ -38,14 +37,15 @@
             currency: localStorage.getItem('__currency'),
             rate: localStorage.getItem('__rate'),
             user: null,
-            loading: true,
-            complete: false
+            loading: true
         }),
+        created() {
+            this.setUser()
+        },
         mounted() {
             this.loading = false
             this.getCurrency()
             this.updateCart()
-            this.setUser()
         },
         methods: {
             async setUser() {

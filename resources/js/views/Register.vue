@@ -71,7 +71,7 @@
             loading: false
         }),
         mounted() {
-
+            document.title = this.$router.currentRoute.meta.title
         },
         methods: {
             error(errors, field) {

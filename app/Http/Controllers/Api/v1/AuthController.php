@@ -99,7 +99,7 @@ class AuthController extends Controller
 
         return response()->json([
             'status' => true,
-            'user' => Auth::id(),
+            'user' => $user,
             'message' => 'You are logged',
             'token' => $token
         ], 200);

@@ -51,6 +51,9 @@
             message: '',
             loading: false
         }),
+        mounted() {
+            document.title = this.$router.currentRoute.meta.title
+        },
         methods: {
             error(errors, field) {
                 return errors.hasOwnProperty(field) ? errors[field].join(',') : ''

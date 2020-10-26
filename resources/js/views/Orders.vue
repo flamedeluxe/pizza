@@ -12,6 +12,7 @@
                     <th>Address</th>
                     <th>Phone</th>
                     <th>Status</th>
+                    <th>Total</th>
                     <th>Delivery</th>
                     <th>Products</th>
                     <th>Created at</th>
@@ -20,6 +21,7 @@
                     <td>{{ order.address }}</td>
                     <td>{{ order.phone }}</td>
                     <td>{{ order.status ? order.status.title : '' }}</td>
+                    <td>{{ order.total }}</td>
                     <td>{{ order.delivery ? order.delivery.title : '' }}</td>
                     <td>
                        <div v-for="product in order.products" :key="product.id" v-if="order.products">
@@ -29,10 +31,10 @@
                     <td>{{ date(order.created_at) }}</td>
                 </tr>
                 <tr v-if="count === 0 && loading === false">
-                    <td colspan="6">No orders</td>
+                    <td colspan="7">No orders</td>
                 </tr>
                 <tr v-if="loading" class="text-center">
-                    <td colspan="6">Loading...</td>
+                    <td colspan="7">Loading...</td>
                 </tr>
             </table>
         </div>
@@ -54,6 +56,7 @@
             count: 0,
         }),
         mounted() {
+            document.title = this.$router.currentRoute.meta.title
             this.getOrders()
         },
         methods: {

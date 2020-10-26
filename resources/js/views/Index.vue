@@ -59,7 +59,7 @@
         },
         async mounted() {
             this.products = await this.loadProducts()
-
+            document.title = this.$router.currentRoute.meta.title
         },
         methods: {
             async loadProducts() {

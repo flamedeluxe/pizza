@@ -85,7 +85,7 @@
         props: {
             currency: String|Number,
             rate: String|Number,
-            total: String|Number
+            total: String|Number,
         },
         components: {
 
@@ -107,7 +107,7 @@
             message: {}
         }),
         mounted() {
-
+            this.setUserFields()
         },
         watch: {
             form: {
@@ -122,6 +122,14 @@
             error(errors, field) {
                 return errors.hasOwnProperty(field) ? errors[field].join(',') : ''
             },
+            setUserFields() {
+                if(localStorage.getItem('user')) {
+                    const user = JSON.parse(localStorage.getItem('user'))
+                    this.form.name = user.name
+                    this.form.email = user.email
+                    this.form.phone = user.phone
+                }
+            },
             async order() {
                 this.form.cart = localStorage.getItem('__cart')
                 this.form.user = JSON.parse(localStorage.getItem('user'))
@@ -134,7 +142,8 @@
                     this.$emit('cleanCart')
 
                     this.$toast.success(data.message);
-                    return data
+
+                    await this.$router.push('done')
                 }catch(error) {
                     this.loading = false
                     if(error.response.status === 419) {
