@@ -21,7 +21,7 @@
                     <td>{{ order.address }}</td>
                     <td>{{ order.phone }}</td>
                     <td>{{ order.status ? order.status.title : '' }}</td>
-                    <td>{{ order.total }}</td>
+                    <td>{{ Math.round(order.total / rate) }} {{ currency }}</td>
                     <td>{{ order.delivery ? order.delivery.title : '' }}</td>
                     <td>
                        <div v-for="product in order.products" :key="product.id" v-if="order.products">
