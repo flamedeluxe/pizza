@@ -18,7 +18,9 @@ class Order extends Model
         'payment_id',
         'delivery_id',
         'status_id',
-        'user_id'
+        'user_id',
+        'currency',
+        'rate'
     ];
 
     public function products()

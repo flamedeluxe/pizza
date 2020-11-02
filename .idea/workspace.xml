@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3fbbdde2-d5ba-457c-909a-9bed435548ec" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/mail/admin/order.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/mail/base.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/mail/user/order.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/v1/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_22_093058_create_orders_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_22_093058_create_orders_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/OrderComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/OrderComponent.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -218,7 +226,8 @@
       <workItem from="1603452811409" duration="3184000" />
       <workItem from="1603546408304" duration="596000" />
       <workItem from="1603559881244" duration="35456000" />
-      <workItem from="1603729220774" duration="3215000" />
+      <workItem from="1603729220774" duration="3840000" />
+      <workItem from="1604294789613" duration="9981000" />
     </task>
     <task id="LOCAL-00001" summary="(new) Migrations created for products, payments, deliveries, statuses,&#10;order_products, orders&#10;(new) Models created: Delivery, Order, Payment, Product, Status">
       <created>1603263555609</created>
@@ -304,7 +313,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603732021668</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="(fix) count of pizzas">
+      <created>1603732477398</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1603732477398</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,6 +353,7 @@
     <MESSAGE value="(fix) Login.vue fix errors blocks" />
     <MESSAGE value="(new) page done&#10;(new) regex for EU phone format&#10;(fix) default order delivery set to &quot;delivery&quot;&#10;(new) in order component set user fields if user is logged" />
     <MESSAGE value="(fix) order total in user account" />
-    <option name="LAST_COMMIT_MESSAGE" value="(fix) order total in user account" />
+    <MESSAGE value="(fix) count of pizzas" />
+    <option name="LAST_COMMIT_MESSAGE" value="(fix) count of pizzas" />
   </component>
 </project>

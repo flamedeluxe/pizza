@@ -19,6 +19,8 @@ class CreateOrdersTable extends Migration
             $table->string('surname')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
+            $table->string('currency')->nullable();
+            $table->float('rate')->nullable();
             $table->text('address')->nullable();
             $table->unsignedBigInteger('payment_id')->default(1);
             $table->foreign('payment_id')->references('id')->on('payments');

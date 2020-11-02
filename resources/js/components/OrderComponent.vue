@@ -98,7 +98,9 @@
                 email: '',
                 address: '',
                 user: '',
-                cart: {}
+                cart: {},
+                currency: '',
+                rate: ''
             },
             delivery: 12,
             loading: false,
@@ -133,6 +135,9 @@
             async order() {
                 this.form.cart = localStorage.getItem('__cart')
                 this.form.user = JSON.parse(localStorage.getItem('user'))
+                this.form.currency = this.currency
+                this.form.rate = this.rate
+
                 this.loading = true
                 this.errors = {}
                 try {
